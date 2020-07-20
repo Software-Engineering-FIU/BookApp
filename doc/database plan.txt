@@ -1,0 +1,41 @@
+This has changed, thanks to Angelino 
+
+User -> TableName
+ID (unique)
+FirstName
+LastName
+Email
+Password
+Optional Fields
+
+Book -> TableName
+ID (unique)
+Title
+Author
+ISBN
+Genre 
+Optional Fields
+Price
+SoldCount
+
+BookRatingCommenting -> TableName
+ID (unique)
+BookID 
+UserID
+RatingScore
+RTimestamp
+Comment 
+CTimestamp
+
+WishList -> TableName
+ID (unique)
+UserID
+BookID
+ShoppingID
+Name (unique)
+
+ShoppingCart -> TableName
+ID (unique)
+UserID
+BookID
+Quanities 

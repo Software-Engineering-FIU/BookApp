@@ -1,0 +1,6 @@
+Basic outline
+Flask -> micro web framework
+Flask-SQLAlchemy -> database
+Flask-Login -> User Session management (login)
+Flask-WTF -> provides validation for Forms along with simple way to generate forms.
+Bootstrap-Flask -> WTF requires it to provide forms with bootstrap theme
