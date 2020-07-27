@@ -1,6 +1,8 @@
 # models of your application
 # WishList, User, Book, 
-
+from datetime import datetime
+from flask import current_app
+from .. import db, login_manager
 
 # need other models to make work
 class WishList (db.Model):
