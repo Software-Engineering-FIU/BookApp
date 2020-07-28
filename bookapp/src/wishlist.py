@@ -1,6 +1,6 @@
-from flask import current_app
-from cart.py import addToCart #rename when cart api is made
-from bookapp.dao import DatabaseAccess
+
+#from cart.py import addToCart #rename when cart api is made
+from dao import DatabaseAccess
 
 # WishList -> TableName
 # ID (unique) -> int (primary key)
@@ -19,7 +19,7 @@ class Wishlist (DatabaseAccess):
             testQuery = ("select Name from WishList where WishList.UserID = User.ID and User.ID = '{}'").format(user_id)
             testList = super(Wishlist, self).read(query=testQuery)
             if name not in testList:
-                helperQuery = "select ID from ShoppingCart where ShoppingCart.UserID = User.ID and User.ID = '{}'").format(user_id)
+                helperQuery = "select ID from ShoppingCart where ShoppingCart.UserID = User.ID and User.ID = '{}'".format(user_id)
                 cart_id = super(Wishlist, self).read(query=helperQuery)
                 query = "insert into WishList (UserID, ShoppingID, Name) values ('{}','{}','{}')".format(user_id, cart_id, name)  #create a new list, ID will auto increment, and bookID is blank until some book is added
                 super(Wishlist, self).read(query=query)
@@ -38,13 +38,13 @@ class Wishlist (DatabaseAccess):
             print(e, 'list_id does not exist')
             return []
 
-    def addToList (self, book_id, list_id)
+    def addToList (self, book_id, list_id):
         try:
             testQuery = ("select exists( w.BookID, b.ID "
                          "from WishList as w inner join Book as b on b.ID=w.BookID"
                          "where w.ID='{}')").format(list_id)
             testAdd = super(Wishlist, self).read(query=testQuery)
-            if testAdd = 'true':
+            if testAdd == 'true':
                 query = ("insert into WishList (book_id) values ('{}') where WishList.ID = '{}'").format(book_id, list_id)
                 super(Wishlist, self).read(query=query)
                 # do I need a return statement?
@@ -58,6 +58,6 @@ class Wishlist (DatabaseAccess):
 
     def sendToCart(self, book_id, list_id, cart_id):
         removeFromList(self, book_id, list_id)
-        addToCart(self, book_id, cart_id)
+        #addToCart(self, book_id, cart_id)
         # @cart_id is placeholder until addToCart function is made by Drew?
 
